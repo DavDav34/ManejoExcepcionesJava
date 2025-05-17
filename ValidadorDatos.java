@@ -1,5 +1,40 @@
 import java.util.Scanner;
 
+// Clase base para las excepciones de validación
+class ValidacionException extends Exception {
+    private String campo;
+
+    public ValidacionException(String mensaje, String campo) {
+        super(mensaje);
+        this.campo = campo;
+    }
+
+    public String getCampo() {
+        return campo;
+    }
+}
+
+// Excepción para edad inválida
+class EdadInvalidaException extends ValidacionException {
+    public EdadInvalidaException(String mensaje) {
+        super(mensaje, "edad");
+    }
+}
+
+// Excepción para email inválido
+class EmailInvalidoException extends ValidacionException {
+    public EmailInvalidoException(String mensaje) {
+        super(mensaje, "email");
+    }
+}
+
+// Excepción para contraseña insegura
+class ContrasenaInseguraException extends ValidacionException {
+    public ContrasenaInseguraException(String mensaje) {
+        super(mensaje, "contrasena");
+    }
+}
+
 public class ValidadorDatos {
 
     public static void validarEdad(int edad) throws EdadInvalidaException {
