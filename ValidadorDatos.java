@@ -63,7 +63,8 @@ public class ValidadorDatos {
         String regexMayuscula = ".*[A-Z].*";
         String regexMinuscula = ".*[a-z].*";
         String regexNumero = ".*\\d.*";
-        String regexEspecial = ".*[!@#$%^&()_+\\-=[\\]{};':\"\\\\|,.<>/?].*";
+        // Aquí corregimos la expresión regular escapando bien corchetes y guiones
+        String regexEspecial = ".*[!@#$%^&()_+\\-\\=\\[\\]{};':\"\\\\|,.<>/?].*";
 
         if (!contrasena.matches(regexMayuscula)) {
             throw new ContrasenaInseguraException("La contraseña debe contener al menos una letra mayúscula");
@@ -103,7 +104,7 @@ public class ValidadorDatos {
         } catch (ContrasenaInseguraException | EdadInvalidaException | EmailInvalidoException e) {
             System.err.println("error en el campo '" + e.getCampo() + "': " + e.getMessage());
         } catch (NumberFormatException e) {
-            System.err.println("la  edad debe ser un numero entero valido");
+            System.err.println("la edad debe ser un numero entero valido");
         } finally {
             scanner.close();
         }
