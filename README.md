@@ -1,4 +1,4 @@
-# ManejoExcepcionesJava
+# Manejo Excepciones Java
 
 Este proyecto en Java es un programa para validar datos de registro de usuarios, asegurando que la información ingresada cumpla con ciertas reglas de formato y seguridad. Utiliza excepciones personalizadas para manejar errores específicos de validación.
 
