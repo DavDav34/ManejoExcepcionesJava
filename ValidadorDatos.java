@@ -48,31 +48,27 @@ public class ValidadorDatos {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            System.out.print("Nombre de usuario: ");
+            System.out.print("nombre de usuario: ");
             String usuario = scanner.nextLine();
 
-            System.out.print("Su contraseña: ");
+            System.out.print("su contraseña: ");
             String contrasena = scanner.nextLine();
             validarContrasena(contrasena);
 
-            System.out.print("Su edad: ");
+            System.out.print("su edad: ");
             int edad = Integer.parseInt(scanner.nextLine());
             validarEdad(edad);
 
-            System.out.print("Su email: ");
+            System.out.print("su email: ");
             String email = scanner.nextLine();
             validarEmail(email);
 
-            System.out.println("El usuario se registró correctamente");
+            System.out.println("el usuario se registro correctamente");
 
-        } catch (ContrasenaInseguraException e) {
-            System.out.println("Error en la contraseña: " + e.getMessage());
-        } catch (EdadInvalidaException e) {
-            System.out.println("Error en la edad: " + e.getMessage());
-        } catch (EmailInvalidoException e) {
-            System.out.println("Error en el email: " + e.getMessage());
+        } catch (ContrasenaInseguraException | EdadInvalidaException | EmailInvalidoException e) {
+            System.err.println("error en el campo '" + e.getCampo() + "': " + e.getMessage());
         } catch (NumberFormatException e) {
-            System.out.println("La edad debe ser un número válido.");
+            System.err.println("la  edad debe ser un numero entero valido");
         } finally {
             scanner.close();
         }
