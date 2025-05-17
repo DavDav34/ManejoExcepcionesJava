@@ -51,3 +51,25 @@ public class ValidadorDatos {
         }
     }
 }
+public static void validarContrasena(String contrasena) throws ContrasenaInseguraException {
+    if (contrasena == null || contrasena.length() < 8) {
+        throw new ContrasenaInseguraException("La contraseña debe tener al menos 8 caracteres.");
+    }
+    String regexMayuscula = ".[A-Z].";
+    String regexMinuscula = ".[a-z].";
+    String regexNumero = ".\\d.";
+    String regexEspecial = ".[!@#$%^&()_+\\-=[\\]{};':\"\\\\|,.<>/?].*";
+
+    if (!contrasena.matches(regexMayuscula)) {
+        throw new ContrasenaInseguraException("La contraseña debe contener al menos una letra mayuscula");
+    }
+    if (!contrasena.matches(regexMinuscula)) {
+        throw new ContrasenaInseguraException("La contraseña debe contener al menos una letra minuscula");
+    }
+    if (!contrasena.matches(regexNumero)) {
+        throw new ContrasenaInseguraException("La contraseña debe contener al menos un numero");
+    }
+    if (!contrasena.matches(regexEspecial)) {
+        throw new ContrasenaInseguraException("La contraseña debe contener al menos un caracter especial");
+    }
+}
